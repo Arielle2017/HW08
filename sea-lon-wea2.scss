@@ -1,0 +1,91 @@
+@import "variables";
+
+html {
+  font-size: 16px;
+}
+
+h1 {
+  font-size: $h1size;
+  display: fix;
+  margin: $margins;
+}
+
+h2 {
+  font-size: $h2size;
+  margin: 0 3rem 3rem;
+}
+
+p {
+  color: blue;
+}
+
+
+body {
+  background-color: $white;
+
+  height: 100vh;
+
+  justify-content: center;
+}
+
+
+.circle {
+  height: $main-size;
+  width: $main-size;
+  /*vmin = 1 vh or vw whichever is smaller */
+  background: rgb(255, 225, 0);
+  border-radius: 50%;
+  font-size: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 0.5s ease;
+  /*
+              background-color 2s ease,
+              border-radius 2s ease-out;
+*/
+}
+
+.activated {
+  background: rgb(255, 0, 255);
+  border-radius: 0;
+  transform: scale(0.6) rotate(360deg);
+  /*transition and transform are working hand-in-hand */
+}
+
+button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+    &.hover {
+      color: $pink;}
+    &.focus {
+      color: $black; }
+        &.active {
+          color: #db1d2d;
+  }
+}
+
+
+
+$emoji: ☝, ✌, 💅, 🖖, 🖐;
+
+ol {
+  list-style-type: none;
+  margin: 1rem;
+}
+
+li {
+  &:before {
+    display: inline-block;
+    margin: 0 0.25rem;
+  }
+
+  @for $i from 1 through length($emoji) {
+    &:nth-of-type(#{$i}):before {
+      content: "#{nth($emoji, $i)}";
+    }
+  }
+}
